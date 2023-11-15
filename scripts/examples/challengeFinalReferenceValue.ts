@@ -3,7 +3,7 @@
  * challenge was enabled by the data feed provider at value submission and
  * if within the challenge period (24h after submission).
  * Run: `yarn diva::challengeFinalReferenceValue --network mumbai`
- * 
+ *
  * Example usage (append corresponding network):
  * 1. `yarn diva::createContingentPool`: Create pool with a short expiration and a data provider account
  * that you control.
@@ -28,7 +28,7 @@ async function main() {
 
   // Id of an existing pool
   const poolId =
-    "0x645f2a5924b93b93af4a29c4759422e24d7096c5e16bd72571410efe3cb2bcbd";
+    "0x1de191d66c6848d7c0d33d16b5041cd0ac5c46f208650cf63e1f3c96d4b3a521";
 
   // Proposed final reference value expressed as an integer with 18 decimals
   const proposedFinalReferenceValue = parseUnits("1270");
@@ -36,7 +36,6 @@ async function main() {
   // Set position token holder account that will challenge a final value submission
   const [positionTokenHolder] = await ethers.getSigners();
   console.log("Position token holder address: " + positionTokenHolder.address);
-
 
   // ************************************
   //              EXECUTION

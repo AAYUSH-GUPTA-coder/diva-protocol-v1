@@ -1,7 +1,7 @@
 /**
  * Script to add liquidity to an existing contingent pool.
  * Run: `yarn diva::addLiquidity --network mumbai`
- * 
+ *
  * Example usage (append corresponding network):
  * 1. `yarn diva::createContingentPool`: Create pool.
  * 2. `yarn diva::getPoolParameters`: Check the collateral balance before adding liquidity.
@@ -24,19 +24,18 @@ async function main() {
 
   // Id of an existing pool
   const poolId =
-    "0x52a16114f6d8b8213c2a345ce81a7f6d7eb630b7ef25c182817495e2c7d4752e";
-  
+    "0x1de191d66c6848d7c0d33d16b5041cd0ac5c46f208650cf63e1f3c96d4b3a521";
+
   // Collateral token amount to be added to an existing pool. Conversion into
   // integer happens below in the code as it depends on the collateral token decimals.
   const additionalAmountString = "3";
-  
+
   // Long & short token recipients
-  const longRecipient = "0x245B8ABbC1B70B370d1b81398dE0a7920B25E7ca";
-  const shortRecipient = "0x2ADdE7aBe04Bc1F14a3c397251A01276344Cc8a8";
+  const longRecipient = "0xcBA1fBd153291Ab72055193Fa5615660d54eD370";
+  const shortRecipient = "0x00169E8d26FB0Bc936c0893d95922bbd0b50b88c";
 
   // Set liquidity provider's account
   const [liquidityProvider] = await ethers.getSigners();
-
 
   // ************************************
   //              EXECUTION

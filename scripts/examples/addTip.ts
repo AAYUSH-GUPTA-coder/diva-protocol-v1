@@ -24,7 +24,7 @@ async function main() {
 
   // Id of an existing pool
   const poolId =
-    "0x1fecd07103f0ab9be67dbd4b19305fadc5360a8f09723c7633c6620931b4b009";
+    "0x1de191d66c6848d7c0d33d16b5041cd0ac5c46f208650cf63e1f3c96d4b3a521";
 
   // Collateral token amount to be added to an existing pool as a tip. Conversion into
   // integer happens below in the code as it depends on the collateral token decimals.
@@ -32,7 +32,6 @@ async function main() {
 
   // Set tipper account
   const [tipper] = await ethers.getSigners();
-
 
   // ************************************
   //              EXECUTION

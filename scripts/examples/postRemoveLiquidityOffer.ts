@@ -1,5 +1,5 @@
 /**
-* Script to post a remove liquidity offer to the API service.
+ * Script to post a remove liquidity offer to the API service.
  * The offer is also stored in a JSON file located in the "offers" folder.
  * If the folder does not exist, it will be created automatically.
  * Run: `yarn diva::postRemoveLiquidityOffer --network mumbai`
@@ -32,7 +32,7 @@ async function main() {
 
   // Id of pool to remove liquidity from
   const poolId =
-    "0x7e5b34f6dc058ace5b51b90e4b60d2b8a80df1e6198de89f4c941290b3c7bfc1";
+    "0x1de191d66c6848d7c0d33d16b5041cd0ac5c46f208650cf63e1f3c96d4b3a521";
 
   // Offer terms
   const taker = "0x0000000000000000000000000000000000000000";
@@ -41,7 +41,6 @@ async function main() {
   const makerIsLong = true;
   const offerExpiry = await getExpiryTime(5000);
   const minimumTakerFillAmountInput = "1";
-
 
   // ************************************
   //              EXECUTION
@@ -68,9 +67,18 @@ async function main() {
   const decimals = await erc20Contract.decimals();
 
   // Convert inputs into integers
-  const makerCollateralAmount = parseUnits(makerCollateralAmountInput, decimals).toString();
-  const positionTokenAmount = parseUnits(positionTokenAmountInput, decimals).toString();
-  const minimumTakerFillAmount = parseUnits(minimumTakerFillAmountInput, decimals).toString();
+  const makerCollateralAmount = parseUnits(
+    makerCollateralAmountInput,
+    decimals
+  ).toString();
+  const positionTokenAmount = parseUnits(
+    positionTokenAmountInput,
+    decimals
+  ).toString();
+  const minimumTakerFillAmount = parseUnits(
+    minimumTakerFillAmountInput,
+    decimals
+  ).toString();
   const salt = Date.now().toString();
 
   // Prepare remove liquidity offer
@@ -135,15 +143,14 @@ async function main() {
   if (!fs.existsSync(offersFolderPath)) {
     // Create the offers folder if it doesn't exist
     fs.mkdirSync(offersFolderPath);
-    console.log("New folder called 'offers' created to store the offer json files.")
+    console.log(
+      "New folder called 'offers' created to store the offer json files."
+    );
   }
 
   // Save offer as json
   const jsonFilePath = `offers/removeLiquidityOffer_${offerRemoveLiquidity.salt}.json`;
-  writeFile(
-    jsonFilePath,
-    JSON.stringify(data)
-  );
+  writeFile(jsonFilePath, JSON.stringify(data));
 
   // Get posted offer
   const getUrl = `${apiUrl}/${offerHash}`;

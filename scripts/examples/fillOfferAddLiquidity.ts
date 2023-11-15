@@ -39,9 +39,10 @@ async function main() {
   // offerHash: Hash of offer to fill. Only required if `sourceOfferDetails` = "API" was selected.
   // jsonFilePath: Only required if `sourceOfferDetails` = "JSON" was selected
   const offer: Offer = {
-    sourceOfferDetails: "API",
-    offerHash: "0x0b95c391a73b64f5903c2df62dbe41dcf74c0bfa46fcaa19612f1fc06a7113a9",
-    jsonFilePath: "./offers/addLiquidityOffer_1686467035892.json",
+    sourceOfferDetails: "JSON", // Enter API for offerHash and JSON for jsonFilePath
+    offerHash:
+      "0x0b95c391a73b64f5903c2df62dbe41dcf74c0bfa46fcaa19612f1fc06a7113a9",
+    jsonFilePath: "./offers/addLiquidityOffer_1700037101461.json",
   };
 
   // Set taker account
@@ -192,7 +193,8 @@ async function main() {
 
   // Get taker filled amount before fill offer
   const takerFilledAmountBefore = await diva.getTakerFilledAmount(offer.offerHash);
-
+  
+  //! This is the main function we need to care about
   // Fill offer with taker account
   const tx = await diva
     .connect(taker)

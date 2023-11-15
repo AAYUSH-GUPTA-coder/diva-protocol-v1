@@ -15,13 +15,12 @@ async function main() {
 
   // Id of an existing pool
   const poolId =
-    "0x8734a4a7006a1dea37a27b0394ae3970fca52395bece11a8947f7ed16fb80bd6";
-
+    "0x1de191d66c6848d7c0d33d16b5041cd0ac5c46f208650cf63e1f3c96d4b3a521";
 
   // ************************************
   //              EXECUTION
   // ************************************
-  
+
   // Connect to deployed DIVA contract
   const diva = await ethers.getContractAt(DIVA_ABI, DIVA_ADDRESS[network.name]);
 
@@ -51,7 +50,10 @@ async function main() {
     formatUnits(poolParams.finalReferenceValue)
   );
   console.log("Capacity: ", formatUnits(poolParams.capacity, decimals));
-  console.log("Status timestamp: ", new Date(poolParams.statusTimestamp * 1000).toLocaleString());
+  console.log(
+    "Status timestamp: ",
+    new Date(poolParams.statusTimestamp * 1000).toLocaleString()
+  );
   console.log("Short token: ", poolParams.shortToken);
   console.log(
     "Payout short token: ",
@@ -63,7 +65,10 @@ async function main() {
     formatUnits(poolParams.payoutLong, decimals)
   );
   console.log("Collateral token: ", poolParams.collateralToken);
-  console.log("Expiry time: ", new Date(poolParams.expiryTime * 1000).toLocaleString());
+  console.log(
+    "Expiry time: ",
+    new Date(poolParams.expiryTime * 1000).toLocaleString()
+  );
   console.log("Data provider: ", poolParams.dataProvider);
   console.log(
     "Status final reference value: ",

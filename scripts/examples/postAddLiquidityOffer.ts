@@ -32,16 +32,15 @@ async function main() {
 
   // Id of pool to add liquidity to
   const poolId =
-    "0x7e5b34f6dc058ace5b51b90e4b60d2b8a80df1e6198de89f4c941290b3c7bfc1";
+    "0x1de191d66c6848d7c0d33d16b5041cd0ac5c46f208650cf63e1f3c96d4b3a521";
 
   // Offer terms
-  const taker = "0x0000000000000000000000000000000000000000";
-  const makerCollateralAmountInput = "20";
-  const takerCollateralAmountInput = "80";
-  const makerIsLong = false;
-  const offerExpiry = await getExpiryTime(5000);
-  const minimumTakerFillAmountInput = "60";
-
+  const taker = "0x0000000000000000000000000000000000000000"; // address of the taker. Setting it to the zero address, so we can change it according to the user address
+  const makerCollateralAmountInput = "50"; // 20 // contribution of Maker
+  const takerCollateralAmountInput = "50"; // 80 //contribution of taker (user who wants to bet)
+  const makerIsLong = true; // Maker (us creator of the pool) decides where you want to bet
+  const offerExpiry = await getExpiryTime(5000); // setting the expiry time, if no one fills it like 24 hours, contigent pool expires
+  const minimumTakerFillAmountInput = "0"; // 80 // Minimum amount user have to deposit to take in bet
 
   // ************************************
   //              EXECUTION
@@ -68,9 +67,18 @@ async function main() {
   const decimals = await collateralToken.decimals();
 
   // Convert inputs into integers
-  const makerCollateralAmount = parseUnits(makerCollateralAmountInput, decimals).toString();
-  const takerCollateralAmount = parseUnits(takerCollateralAmountInput, decimals).toString();
-  const minimumTakerFillAmount = parseUnits(minimumTakerFillAmountInput, decimals).toString();
+  const makerCollateralAmount = parseUnits(
+    makerCollateralAmountInput,
+    decimals
+  ).toString();
+  const takerCollateralAmount = parseUnits(
+    takerCollateralAmountInput,
+    decimals
+  ).toString();
+  const minimumTakerFillAmount = parseUnits(
+    minimumTakerFillAmountInput,
+    decimals
+  ).toString();
   const salt = Date.now().toString();
 
   // Prepare add liquidity offer
@@ -135,15 +143,14 @@ async function main() {
   if (!fs.existsSync(offersFolderPath)) {
     // Create the offers folder if it doesn't exist
     fs.mkdirSync(offersFolderPath);
-    console.log("New folder called 'offers' created to store the offer json files.")
+    console.log(
+      "New folder called 'offers' created to store the offer json files."
+    );
   }
 
   // Save offer as JSON. File path is logged as part of the `writeFile` function.
   const jsonFilePath = `offers/addLiquidityOffer_${offerAddLiquidity.salt}.json`;
-  writeFile(
-    jsonFilePath,
-    JSON.stringify(data)
-  );
+  writeFile(jsonFilePath, JSON.stringify(data));
 
   // Get posted offer
   const getUrl = `${apiUrl}/${offerHash}`;

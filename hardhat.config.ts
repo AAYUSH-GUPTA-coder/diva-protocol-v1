@@ -48,114 +48,115 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: process.env.RPC_URL_ARBITRUMTESTNET || "",
+        url: process.env.RPC_URL_MUMBAI || "",
         // blockNumber: 8219888, // Goerli
         // blockNumber: 4228882, // Chiado
-        // blockNumber: 32419100, // Mumbai
-        blockNumber: 23352716, // Arbitrum testnet
+        blockNumber: 32419100, // Mumbai
+        // blockNumber: 23352716, // Arbitrum testnet
       },
       accounts: {
         mnemonic: MNEMONIC, // example with mnemonic; type: object
       },
       gas: "auto",
     },
-    ethMain: {
-      url: process.env.RPC_URL_ETHMAIN,
-      chainId: 1,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    goerli: {
-      url: process.env.RPC_URL_GOERLI,
-      chainId: 5,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-      // gasPrice: 50000000000,
-    },
-    sepolia: {
-      url: process.env.RPC_URL_SEPOLIA,
-      chainId: 11155111,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    gnosis: {
-      url: process.env.RPC_URL_GNOSIS,
-      chainId: 100,
-      accounts: {
-        mnemonic: MNEMONIC, // example with mnemonic; type: object
-      },
-      // accounts: [`0x${PRIVATE_KEY}`], // example with private key; type: array
-    },
-    chiado: {
-      url: process.env.RPC_URL_CHIADO,
-      chainId: 10200,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-      gasPrice: 7000000000,
-    },
-    polygon: {
-      url: process.env.RPC_URL_POLYGON,
-      chainId: 137,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-      gasPrice: 350000000000,
-    },
+    // ethMain: {
+    //   url: process.env.RPC_URL_ETHMAIN,
+    //   chainId: 1,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // goerli: {
+    //   url: process.env.RPC_URL_GOERLI,
+    //   chainId: 5,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    //   // gasPrice: 50000000000,
+    // },
+    // sepolia: {
+    //   url: process.env.RPC_URL_SEPOLIA,
+    //   chainId: 11155111,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // gnosis: {
+    //   url: process.env.RPC_URL_GNOSIS,
+    //   chainId: 100,
+    //   accounts: {
+    //     mnemonic: MNEMONIC, // example with mnemonic; type: object
+    //   },
+    //  // accounts: [`0x${PRIVATE_KEY}`], // example with private key; type: array
+    // },
+    // chiado: {
+    //   url: process.env.RPC_URL_CHIADO,
+    //   chainId: 10200,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    //   gasPrice: 7000000000,
+    // },
+    // polygon: {
+    //   url: process.env.RPC_URL_POLYGON,
+    //   chainId: 137,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    //   gasPrice: 350000000000,
+    // },
     mumbai: {
       url: process.env.RPC_URL_MUMBAI,
       chainId: 80001,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
+      // accounts: {
+      //   mnemonic: MNEMONIC,
+      // },
+      accounts: [`0x${PRIVATE_KEY}`],
       // Do not add `gas` or `gasPrice` params, otherwise xdeploy process will fail
     },
-    arbitrumMain: {
-      // arbitrumOne; there also exists arbitrumNova in xdeployer
-      url: process.env.RPC_URL_ARBITRUMMAIN,
-      chainId: 42161,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    arbitrumTestnet: {
-      url: process.env.RPC_URL_ARBITRUMTESTNET,
-      chainId: 421613,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    optimismMain: {
-      url: process.env.RPC_URL_OPTIMISM_MAINNET,
-      chainId: 10,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    optimismTestnet: {
-      url: process.env.RPC_URL_OPTIMISM_TESTNET,
-      chainId: 420,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    apothem: {
-      url: process.env.RPC_URL_APOTHEM,
-      chainId: 51,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
-    xdc: {
-      url: process.env.RPC_URL_XDC,
-      chainId: 50,
-      accounts: {
-        mnemonic: MNEMONIC,
-      },
-    },
+    // arbitrumMain: {
+    //   // arbitrumOne; there also exists arbitrumNova in xdeployer
+    //   url: process.env.RPC_URL_ARBITRUMMAIN,
+    //   chainId: 42161,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // arbitrumTestnet: {
+    //   url: process.env.RPC_URL_ARBITRUMTESTNET,
+    //   chainId: 421613,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // optimismMain: {
+    //   url: process.env.RPC_URL_OPTIMISM_MAINNET,
+    //   chainId: 10,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // optimismTestnet: {
+    //   url: process.env.RPC_URL_OPTIMISM_TESTNET,
+    //   chainId: 420,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // apothem: {
+    //   url: process.env.RPC_URL_APOTHEM,
+    //   chainId: 51,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
+    // xdc: {
+    //   url: process.env.RPC_URL_XDC,
+    //   chainId: 50,
+    //   accounts: {
+    //     mnemonic: MNEMONIC,
+    //   },
+    // },
   },
   xdeploy: { ...xdeployConfig, ...generalXdeployConfig },
   solidity: {
